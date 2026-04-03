@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Car Zone Elite Automotive Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contect.css">
+</head>
+<body class="contact-page">
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <canvas id="contactCanvas" class="contact-ambient-canvas" aria-hidden="true"></canvas>
+
+    <nav class="navbar">
+        <a class="logo" href="Carzone.html" aria-label="Car Zone home">
+            <img src="car-zone-logo.png" alt="Car Zone logo" class="nav-logo-img">
+            <span class="logo-copy"><strong>Car Zone</strong><span>Premium Auto Care</span></span>
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="Carzone.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contect.html" class="active">Contact</a>
+        </div>
+    </nav>
+
+    <header class="contact-hero">
+        <div class="contact-hero__grid"></div>
+        <div class="contact-hero__orb contact-hero__orb--one"></div>
+        <div class="contact-hero__orb contact-hero__orb--two"></div>
+        <div class="scanline"></div>
+
+        <div class="contact-hero__inner">
+            <div class="contact-hero__content">
+                <p class="section-kicker">Direct Contact</p>
+                <h1 class="main-title">TALK TO <span>CAR ZONE</span></h1>
+                <p class="hero-description">A cleaner contact page for repair, detailing, EV service, and fleet support. Same premium tone as the rest of the site, with stronger motion and no bot-style panel.</p>
+                <div class="hero-actions">
+                    <a class="btn-main" href="tel:+971504140038">Call +971 50 4140038</a>
+                    <a class="btn-secondary" href="services.html">Explore Services</a>
+                </div>
+                <div class="hero-notes">
+                    <div class="hero-note">
+                        <strong>Dubai and Sharjah</strong>
+                        <span>Two UAE hubs, one quality standard.</span>
+                    </div>
+                    <div class="hero-note">
+                        <strong>Body, EV, Fleet, Detailing</strong>
+                        <span>Tell us what the vehicle needs and we will guide the next step.</span>
+                    </div>
+                </div>
+                <div class="service-marquee" aria-label="Car Zone services">
+                    <div class="service-marquee__track">
+                        <span>Collision Repair</span>
+                        <span>Paint Correction</span>
+                        <span>Ceramic Coating</span>
+                        <span>EV Diagnostics</span>
+                        <span>Fleet Support</span>
+                        <span>Mechanical Service</span>
+                        <span>Collision Repair</span>
+                        <span>Paint Correction</span>
+                        <span>Ceramic Coating</span>
+                        <span>EV Diagnostics</span>
+                        <span>Fleet Support</span>
+                        <span>Mechanical Service</span>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="contact-hero__panel">
+                <span class="panel-chip">Quick Access</span>
+                <h2>Simple, premium, and easier to scan.</h2>
+                <p>The old tactical wording is gone. This version matches the gold-and-black Car Zone style and adds more layered animation.</p>
+                <div class="signal-grid">
+                    <article class="signal-card" data-tilt-card>
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span class="signal-label">Locations</span>
+                        <strong>Dubai and Sharjah</strong>
+                    </article>
+                    <article class="signal-card" data-tilt-card>
+                        <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+                        <span class="signal-label">Call</span>
+                        <strong>+971 50 4140038</strong>
+                    </article>
+                    <article class="signal-card" data-tilt-card>
+                        <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+                        <span class="signal-label">Support</span>
+                        <strong>Repair to detailing</strong>
+                    </article>
+                    <article class="signal-card" data-tilt-card>
+                        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                        <span class="signal-label">Future Ready</span>
+                        <strong>EV and fleet care</strong>
+                    </article>
+                </div>
+            </aside>
+        </div>
+    </header>
+
+    <main class="contact-main">
+        <section class="section-shell">
+            <div class="section-heading">
+                <p class="section-kicker">01 - Reach Us Fast</p>
+                <h2>Everything important is right here.</h2>
+                <p class="section-copy">Cleaner wording, cleaner layout, and clearer ways to contact the team.</p>
+            </div>
+            <div class="overview-grid">
+                <article class="contact-card overview-card">
+                    <div class="overview-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></div>
+                    <h3>Dubai Workshop</h3>
+                    <p>10 7A Street, Umm Ramool Dubai</p>
+                    <a href="https://maps.google.com/?q=25.2297,55.3672" target="_blank" rel="noopener noreferrer">Open directions</a>
+                </article>
+                <article class="contact-card overview-card">
+                    <div class="overview-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></div>
+                    <h3>Sharjah Workshop</h3>
+                    <p>19 St, Industrial Area 15, Sharjah</p>
+                    <a href="https://maps.google.com/?q=25.3090,55.5136" target="_blank" rel="noopener noreferrer">Plan your visit</a>
+                </article>
+                <article class="contact-card overview-card">
+                    <div class="overview-icon"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></div>
+                    <h3>Follow Car Zone</h3>
+                    <p>Keep up with workshop updates and project highlights.</p>
+                    <div class="mini-socials">
+                        <a href="https://www.instagram.com/carszone.ae?igsh=MWVvd3dhaWk0anl6Zw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/share/18QajriPvN/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/posts/car-zone-dubai_ramadanmubarakuae-carzonedubai-ramadan2026-activity-7429544930181664769-gj8h?utm_source=share&utm_medium=member_android&rcm=ACoAAD3Hbu4Br33O7vlbG12ETkqYSKmGSFtU7K0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="booking-layout">
+                <article class="contact-card booking-card">
+                    <p class="section-kicker">02 - Booking Flow</p>
+                    <h2>Tell us what the vehicle needs.</h2>
+                    <p class="section-copy">Share the basics and this page gives you instant feedback with a more polished feel.</p>
+                    <div class="booking-steps">
+                        <div class="booking-step">
+                            <span>01</span>
+                            <div>
+                                <strong>Choose the service</strong>
+                                <p>Bodywork, mechanical, EV, detailing, or fleet support.</p>
+                            </div>
+                        </div>
+                        <div class="booking-step">
+                            <span>02</span>
+                            <div>
+                                <strong>Pick a location</strong>
+                                <p>Dubai or Sharjah, depending on what suits you best.</p>
+                            </div>
+                        </div>
+                        <div class="booking-step">
+                            <span>03</span>
+                            <div>
+                                <strong>Send the request</strong>
+                                <p>The form now responds with a clean success state.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-pills">
+                        <span>Collision</span>
+                        <span>Diagnostics</span>
+                        <span>EV</span>
+                        <span>Detailing</span>
+                        <span>Protection</span>
+                        <span>Fleet</span>
+                    </div>
+                </article>
+
+                <div class="form-container booking-form-shell">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <input type="text" class="form-input" name="name" placeholder="Your Name" required>
+                            <input type="tel" class="form-input" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-row">
+                            <select class="form-input form-select" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="body">Body and Paint</option>
+                                <option value="mechanical">Mechanical and Electrical</option>
+                                <option value="ev">EV Service</option>
+                                <option value="detailing">Detailing and Protection</option>
+                                <option value="fleet">Fleet Support</option>
+                            </select>
+                            <select class="form-input form-select" name="location" required>
+                                <option value="">Preferred Location</option>
+                                <option value="dubai">Dubai</option>
+                                <option value="sharjah">Sharjah</option>
+                            </select>
+                        </div>
+                        <textarea class="form-textarea" name="message" placeholder="Tell us about the car and the work you need." required></textarea>
+                        <button class="btn-main full-width" id="submitBtn" type="submit">Send Request</button>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="section-heading">
+                <p class="section-kicker">03 - Visit The Team</p>
+                <h2>Switch between both locations.</h2>
+                <p class="section-copy">The interaction stays, but the look is now more like a premium workshop showroom than a control dashboard.</p>
+            </div>
+            <div class="visit-layout">
+                <article class="contact-card visit-panel">
+                    <div class="location-switcher" role="tablist" aria-label="Car Zone locations">
+                        <button class="location-button is-active" type="button" data-location-button="dubai" aria-pressed="true">Dubai</button>
+                        <button class="location-button" type="button" data-location-button="sharjah" aria-pressed="false">Sharjah</button>
+                    </div>
+                    <div class="visit-copy">
+                        <span class="visit-label" id="locationLabel">Dubai Workshop</span>
+                        <h3 id="locationTitle">10 7A Street, Umm Ramool Dubai</h3>
+                        <p id="locationDescription">Ideal for premium bodywork, paint, detailing, diagnostics, and polished delivery.</p>
+                    </div>
+                    <div class="visit-meta">
+                        <div class="visit-meta-card">
+                            <span>Phone</span>
+                            <strong>+971 50 4140038</strong>
+                        </div>
+                        <div class="visit-meta-card">
+                            <span>Best For</span>
+                            <strong id="locationFocus">Assessments, repair, detailing</strong>
+                        </div>
+                    </div>
+                    <div class="social-links visit-links">
+                        <a id="directionsLink" href="https://maps.google.com/?q=25.2297,55.3672" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-route" aria-hidden="true"></i><span>Get Directions</span></a>
+                        <a href="tel:+971504140038"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>Call the Team</span></a>
+                    </div>
+                </article>
+
+                <div class="form-container map-shell">
+                    <div class="map-shell__frame">
+                        <iframe id="locationMap" title="Car Zone location map" src="https://www.google.com/maps?q=25.2297,55.3672&z=14&output=embed" loading="lazy" allowfullscreen></iframe>
+                        <div class="map-shell__overlay"></div>
+                        <div class="map-shell__pulse map-shell__pulse--one"></div>
+                    </div>
+                    <div class="map-shell__status">
+                        <span>Active Location</span>
+                        <strong id="mapStatus">Dubai Workshop</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Designed for the future of mobility - Car Zone Hub 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contect.js"></script>
+</body>
+</html>

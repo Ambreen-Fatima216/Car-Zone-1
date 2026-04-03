@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Zone | Elite Automotive Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <canvas id="homeAmbientCanvas" class="home-ambient-canvas" aria-hidden="true"></canvas>
+
+    <nav class="navbar">
+        <a class="logo" href="#home" aria-label="Car Zone home">
+            <img src="car-zone-logo.png" alt="Car Zone logo" class="nav-logo-img">
+            <span class="logo-copy"><strong>Car Zone</strong><span>Premium Auto Care</span></span>
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contect.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="scanline"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-slider" data-hero-slider>
+                    <div class="hero-slides">
+                        <article class="hero-slide is-active" data-hero-slide aria-hidden="false">
+                            <div class="subtitle-container"><div class="line"></div><p class="subtitle">The Automotive Authority</p></div>
+                            <p class="eyebrow">Collision, diagnostics, detailing, and fleet care.</p>
+                            <h1 class="main-title">CARZONE</h1>
+                            <h2 class="sub-title">UAE HUB 2026</h2>
+                            <p class="hero-description">Premium repair and finishing with fast turnaround across Dubai and Sharjah.</p>
+                            <div class="hero-cta">
+                                <button class="btn-main" type="button" data-scroll-target="#services">Start With Services</button>
+                                <a class="btn-secondary" href="#contact">Talk to the Team</a>
+                            </div>
+                        </article>
+                        <article class="hero-slide" data-hero-slide aria-hidden="true">
+                            <div class="subtitle-container"><div class="line"></div><p class="subtitle">Excellence Without Compromise</p></div>
+                            <p class="eyebrow">Built for owners who expect precision and clarity.</p>
+                            <h1 class="main-title">RESTORE</h1>
+                            <h2 class="sub-title">CONFIDENCE ON THE ROAD</h2>
+                            <p class="hero-description">Genuine parts, honest service, and clean workmanship that protects value.</p>
+                            <div class="hero-cta">
+                                <button class="btn-main" type="button" data-scroll-target="#about">Read Our Story</button>
+                                <a class="btn-secondary" href="#why-us">Why Car Zone</a>
+                            </div>
+                        </article>
+                        <article class="hero-slide" data-hero-slide aria-hidden="true">
+                            <div class="subtitle-container"><div class="line"></div><p class="subtitle">Future-Ready Operations</p></div>
+                            <p class="eyebrow">Ready for fleets, EV systems, and modern workshop demands.</p>
+                            <h1 class="main-title">EV AND</h1>
+                            <h2 class="sub-title">FLEET SPECIALISTS</h2>
+                            <p class="hero-description">From claims support to EV diagnostics, Car Zone is ready for 2026 and beyond.</p>
+                            <div class="hero-cta">
+                                <button class="btn-main" type="button" data-scroll-target="#ev">Explore EV Services</button>
+                                <a class="btn-secondary" href="#gallery">View Highlights</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="hero-slider-footer">
+                        <div class="hero-slider-controls">
+                            <button class="hero-arrow" type="button" data-hero-prev aria-label="Previous welcome slide">Prev</button>
+                            <div class="hero-pagination" role="tablist" aria-label="Hero welcome slides">
+                                <button class="hero-dot is-active" type="button" data-hero-dot="0" aria-label="Show slide 1" aria-pressed="true"></button>
+                                <button class="hero-dot" type="button" data-hero-dot="1" aria-label="Show slide 2" aria-pressed="false"></button>
+                                <button class="hero-dot" type="button" data-hero-dot="2" aria-label="Show slide 3" aria-pressed="false"></button>
+                            </div>
+                            <button class="hero-arrow" type="button" data-hero-next aria-label="Next welcome slide">Next</button>
+                        </div>
+                        <div class="hero-slider-status">
+                            <span class="hero-status-label">Welcome Slider</span>
+                            <strong><span data-hero-current>01</span> / <span data-hero-total>03</span></strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-metrics">
+                    <div class="metric"><strong>2</strong><span>UAE service hubs</span></div>
+                    <div class="metric"><strong>OEM</strong><span>Precision-minded standards</span></div>
+                    <div class="metric"><strong>2026</strong><span>Future-ready EV and fleet wing</span></div>
+                </div>
+            </div>
+            <aside class="hero-panel">
+                <span class="panel-chip">Featured Standard</span>
+                <h3>Dealership precision, cleaner delivery.</h3>
+                <p>Body, paint, mechanical, detailing, EV care, and fleet support in one system.</p>
+                <div class="panel-details">
+                    <div><span>Dubai</span><strong>10 7A Street, Umm Ramool</strong></div>
+                    <div><span>Sharjah</span><strong>19 St, Industrial Area 15</strong></div>
+                    <div><span>Contact</span><strong>+971 50 4140038</strong></div>
+                </div>
+            </aside>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="about-section">
+    <div class="section-heading">
+        <p class="section-kicker">01 - Strategy</p>
+        <h2>Excellence Without Compromise</h2>
+    </div>
+
+    <div class="about-layout-v3">
+        <article class="card-v3">
+            <div class="card-inner-v3">
+                <div class="card-front-v3">
+                    <span class="v3-label">Director's Statement</span>
+                    <h3 class="v3-title">"Every vehicle is an investment."</h3>
+                </div>
+                <div class="card-back-v3">
+                    <p class="v3-body">By combining cutting-edge technology with certified expertise, we provide a transparent, world-class service experience. Our promise is simple: Precision workmanship, genuine parts, and honest service delivered on time, every time.</p>
+                    <p style="color:#f3c84f; font-weight:bold; margin-top:20px;">— Board of Directors</p>
+                </div>
+            </div>
+        </article>
+
+        <div class="sidebar-v3">
+            <article class="card-v3 mini-card-v3">
+                <div class="card-inner-v3">
+                    <div class="card-front-v3">
+                        <span class="v3-label">Vision</span>
+                        <h4 class="v3-title" style="font-size:1.1rem;">Trusted Network</h4>
+                    </div>
+                    <div class="card-back-v3">
+                        <p class="v3-body">To deliver premium, ethical automotive care through advanced technology, certified technicians, and genuine parts—exceeding expectations with every repair.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card-v3 mini-card-v3">
+                <div class="card-inner-v3">
+                    <div class="card-front-v3">
+                        <span class="v3-label">Mission</span>
+                        <h4 class="v3-title" style="font-size:1.1rem;">Certified Precision</h4>
+                    </div>
+                    <div class="card-back-v3">
+                        <p class="v3-body">To be the UAE’s most trusted automotive network, leading the transition to electric mobility while setting new benchmarks in innovation and safety.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+        <section id="services" class="section-shell services-section">
+            <div class="section-heading">
+                <p class="section-kicker">02 - Core Services</p>
+                <h2>Everything your car needs, under one quality standard.</h2>
+                <p class="section-copy">Bodywork, mechanical care, EV support, and detailing in one place.</p>
+            </div>
+            <div class="services-showcase">
+                <button class="carousel-btn prev" type="button" data-service-prev aria-label="Previous service"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                <div class="service-card-track">
+                    <article class="service-showcase-card is-active">
+                        <div class="service-visual" style="background-image: url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1400&q=80');"></div>
+                        <div class="service-copy">
+                            <p class="service-chip">Auto Body</p>
+                            <h3 class="service-title">Auto Body and Collision Center</h3>
+                            <p class="service-summary">Structural repair and paint recovery with factory-minded finish control.</p>
+                            <ul class="service-list">
+                                <li>Collision repair system</li>
+                                <li>Original color matching</li>
+                                <li>Paint booths</li>
+                                <li>Custom conversions</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="service-showcase-card">
+                        <div class="service-visual" style="background-image: url('https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=1400&q=80');"></div>
+                        <div class="service-copy">
+                            <p class="service-chip">Mechanical</p>
+                            <h3 class="service-title">Mechanical and Electrical Engineering</h3>
+                            <p class="service-summary">Diagnostics and maintenance planning for daily drivers and fleets.</p>
+                            <ul class="service-list">
+                                <li>Engine and transmission</li>
+                                <li>Brakes and safety systems</li>
+                                <li>Climate control</li>
+                                <li>Fleet maintenance</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="service-showcase-card">
+                        <div class="service-visual" style="background-image: url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1400&q=80');"></div>
+                        <div class="service-copy">
+                            <p class="service-chip">EV Lab</p>
+                            <h3 class="service-title">Specialized EV Services</h3>
+                            <p class="service-summary">Future-ready diagnostics and safe high-voltage service.</p>
+                            <ul class="service-list">
+                                <li>Battery diagnostics</li>
+                                <li>Software and ECU programming</li>
+                                <li>High-voltage safety handling</li>
+                                <li>Drive unit maintenance</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="service-showcase-card">
+                        <div class="service-visual" style="background-image: url('https://images.unsplash.com/photo-1669625378472-e8faaf2503de?q=80&w=1200&auto=format&fit=crop');"></div>
+                        <div class="service-copy">
+                            <p class="service-chip">Detailing</p>
+                            <h3 class="service-title">Premium Detailing and Protection</h3>
+                            <p class="service-summary">Protection and finishing for owners who want the car to stay sharp.</p>
+                            <ul class="service-list">
+                                <li>Paint protection film</li>
+                                <li>Ceramic coating</li>
+                                <li>Vinyl wrapping</li>
+                                <li>Interior detailing</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+                <button class="carousel-btn next" type="button" data-service-next aria-label="Next service"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="service-indicators" aria-label="Service cards navigation">
+                <button type="button" class="indicator-dot is-active" data-service-dot="0" aria-label="Go to service 1"></button>
+                <button type="button" class="indicator-dot" data-service-dot="1" aria-label="Go to service 2"></button>
+                <button type="button" class="indicator-dot" data-service-dot="2" aria-label="Go to service 3"></button>
+                <button type="button" class="indicator-dot" data-service-dot="3" aria-label="Go to service 4"></button>
+            </div>
+        </section>
+
+        <section id="gallery" class="section-shell gallery-section">
+            <div class="section-heading">
+                <p class="section-kicker">03 - Signature Zones</p>
+                <h2>Highlights from the Car Zone floor.</h2>
+                <p class="section-copy">Hover or tap each panel to expand it.</p>
+            </div>
+            <div class="interactive-grid">
+                <article class="grid-card grid-card--body active" data-gallery-card tabindex="0"><span class="card-num">01</span><div class="card-info"><h3>Body and Paint</h3><p>Collision repair, paint recovery, and clean showroom finish.</p></div></article>
+                <article class="grid-card grid-card--mechanical" data-gallery-card tabindex="0"><span class="card-num">02</span><div class="card-info"><h3>Mechanical Precision</h3><p>Reliable engineering support for engines, systems, and drivability.</p></div></article>
+                <article class="grid-card grid-card--ev" data-gallery-card tabindex="0"><span class="card-num">03</span><div class="card-info"><h3>EV Intelligence</h3><p>Battery checks, software calibration, and high-voltage care.</p></div></article>
+                <article class="grid-card grid-card--finish" data-gallery-card tabindex="0"><span class="card-num">04</span><div class="card-info"><h3>Detail and Protection</h3><p>Film, ceramic, wrap, and interior refresh done right.</p></div></article>
+            </div>
+        </section>
+
+        <section id="why-us" class="section-shell advantage-section">
+            <div class="section-heading">
+                <p class="section-kicker">04 - Why Choose Us</p>
+                <h2>Fast to scan. Hard to beat.</h2>
+                <p class="section-copy">High standards, serious capacity, and future-ready service range.</p>
+            </div>
+            <div class="advantage-grid">
+                <article class="advantage-card"><i class="fa-solid fa-warehouse" aria-hidden="true"></i><h3>Spare Parts Warehouse</h3><p>Genuine stock on-site for faster turnaround.</p></article>
+                <article class="advantage-card"><i class="fa-solid fa-microchip" aria-hidden="true"></i><h3>Advanced Diagnostics</h3><p>Passenger cars plus Caterpillar and Cummins support.</p></article>
+                <article class="advantage-card"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><h3>Safety and Performance</h3><p>Strict final checks on every vehicle.</p></article>
+                <article class="advantage-card"><i class="fa-solid fa-building-circle-check" aria-hidden="true"></i><h3>All Under One Roof</h3><p>Body, mechanical, paint, detailing, and fleet support.</p></article>
+                <article class="advantage-card"><i class="fa-solid fa-bolt" aria-hidden="true"></i><h3>Future-Ready EV Wing</h3><p>High-voltage safety and EV specialists.</p></article>
+            </div>
+        </section>
+
+        <section id="ev" class="section-shell ev-intelligence-section">
+            <div class="section-heading">
+                <p class="section-kicker">05 - EV Growth Timeline</p>
+                <h2>EV demand is rising. Our workshop is built for it.</h2>
+                <p class="section-copy">Support for both petrol and electric fleets under one system.</p>
+            </div>
+            <div class="ev-grid">
+                <div class="ev-timeline-wrap">
+                    <div class="timeline-legend">
+                        <span><i class="legend-dot petrol"></i> Petrol Cars</span>
+                        <span><i class="legend-dot hybrid"></i> Hybrid Cars</span>
+                        <span><i class="legend-dot electric"></i> EV Cars</span>
+                    </div>
+                    <div class="ev-timeline">
+                        <div class="timeline-year y2022"><span class="year-label">2022</span><div class="mix-bar"><span class="petrol" style="width: 78%;"></span><span class="hybrid" style="width: 18%;"></span><span class="electric" style="width: 4%;"></span></div></div>
+                        <div class="timeline-year y2023"><span class="year-label">2023</span><div class="mix-bar"><span class="petrol" style="width: 68%;"></span><span class="hybrid" style="width: 22%;"></span><span class="electric" style="width: 10%;"></span></div></div>
+                        <div class="timeline-year y2024"><span class="year-label">2024</span><div class="mix-bar"><span class="petrol" style="width: 58%;"></span><span class="hybrid" style="width: 25%;"></span><span class="electric" style="width: 17%;"></span></div></div>
+                        <div class="timeline-year y2025"><span class="year-label">2025</span><div class="mix-bar"><span class="petrol" style="width: 46%;"></span><span class="hybrid" style="width: 30%;"></span><span class="electric" style="width: 24%;"></span></div></div>
+                        <div class="timeline-year y2026"><span class="year-label">2026</span><div class="mix-bar"><span class="petrol" style="width: 34%;"></span><span class="hybrid" style="width: 28%;"></span><span class="electric" style="width: 38%;"></span></div></div>
+                    </div>
+                </div>
+                <div class="ev-visual-card">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80" alt="Performance vehicle inside an EV-ready workshop environment">
+                    <p class="ev-visual-note">EV share keeps rising, and service standards need to rise with it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fleet" class="section-shell fleet-section">
+            <div class="specialized-services">
+                <div class="specialized-header">
+                    <p class="section-kicker">06 - Fleet Operations</p>
+                    <h3>Specialized services for modern fleets.</h3>
+                </div>
+                <p class="specialized-copy">Fast coordination and technical precision for petrol and electric fleets.</p>
+                <div class="specialized-slider">
+                    <div class="spec-tabs" role="tablist" aria-label="Specialized services slider">
+                        <button class="spec-tab is-active" type="button" role="tab" aria-selected="true" data-target="0">Claims</button>
+                        <button class="spec-tab" type="button" role="tab" aria-selected="false" data-target="1">EV Care</button>
+                        <button class="spec-tab" type="button" role="tab" aria-selected="false" data-target="2">Fleet Contracts</button>
+                    </div>
+                    <div class="spec-content">
+                        <article class="spec-slide is-active"><h4>Insurance Claims for Fleet Cars</h4><p>Direct coordination, faster processing, and clearer status updates.</p></article>
+                        <article class="spec-slide"><h4>EV Maintenance Service for EV Fleets</h4><p>Battery diagnostics and high-voltage checks by trained technicians.</p></article>
+                        <article class="spec-slide"><h4>Complete Service Contracts for Mechanical Fleets</h4><p>Predictable servicing with preventive plans and tighter turnaround.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-shell contact-section">
+            <div class="section-heading">
+                <p class="section-kicker">07 - Contact</p>
+                <h2>Book the next job with Car Zone.</h2>
+                <p class="section-copy">Reach out for diagnostics, detailing, repair, or fleet support.</p>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-stack">
+                    <article class="contact-card">
+                        <div class="contact-block"><span>Dubai Location</span><strong>10 7A Street, Umm Ramool Dubai</strong><p>Phone: +971 50 4140038</p></div>
+                        <div class="contact-block"><span>Sharjah Location</span><strong>19 St, Industrial Area 15, Sharjah</strong><p>Phone: +971 50 4140038</p></div>
+                        <div class="contact-block"><span>Availability</span><strong>Workshop support through the week</strong><p>Fast response for repair, fleet, and detailing requests.</p></div>
+                    </article>
+                    <article class="contact-card social-card">
+                        <div class="contact-block"><span>Follow Car Zone</span><strong>Stay connected with our latest updates</strong></div>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/carszone.ae?igsh=MWVvd3dhaWk0anl6Zw==" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+                            <a href="https://www.facebook.com/share/18QajriPvN/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
+                            <a href="https://www.linkedin.com/posts/car-zone-dubai_ramadanmubarakuae-carzonedubai-ramadan2026-activity-7429544930181664769-gj8h?utm_source=share&utm_medium=member_android&rcm=ACoAAD3Hbu4Br33O7vlbG12ETkqYSKmGSFtU7K0" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>LinkedIn</span></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="form-container">
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" class="form-input">
+                        <input type="email" placeholder="Email Address" class="form-input">
+                        <textarea placeholder="Project Details" class="form-textarea"></textarea>
+                        <button class="btn-main full-width" type="submit">Initiate Contact</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Designed for the future of mobility - Car Zone Hub 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
