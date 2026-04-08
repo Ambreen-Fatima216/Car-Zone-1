@@ -85,6 +85,16 @@ body.services-page::after {
     animation: none;
 }
 
+.services-ambient-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.8; /* Temporarily increased for testing */
+    pointer-events: none;
+}
+
 /* Shared Cursor */
 .cursor-dot,
 .cursor-outline {
@@ -362,11 +372,12 @@ select {
 /* Typography Glitch Effect */
 .main-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(4rem, 12vw, 8rem) !important;
     font-weight: 900;
     color: #fff;
     position: relative;
-    letter-spacing: 10px;
+    letter-spacing: 15px !important;
+    text-shadow: 0 0 30px rgba(243, 200, 79, 0.3);
     margin: 1rem 0;
 }
 
@@ -381,6 +392,69 @@ select {
     color: var(--gold);
     z-index: -1;
 }
+
+/* --- New Interesting Hero Elements --- */
+
+.hero-scanner-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    z-index: 4;
+    opacity: 0.4;
+    animation: scanningLine 4s linear infinite;
+}
+
+.hud-frame {
+    position: absolute;
+    padding: 10px;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    z-index: 5;
+    opacity: 0.6;
+}
+
+.top-left { top: 120px; left: 40px; border-left: 1px solid var(--gold); border-top: 1px solid var(--gold); }
+.bottom-right { bottom: 40px; right: 40px; border-right: 1px solid var(--gold); border-bottom: 1px solid var(--gold); text-align: right;}
+
+.hud-bar {
+    width: 40px; height: 2px; background: var(--gold); margin-top: 5px;
+    animation: hudPulse 2s ease-in-out infinite alternate;
+}
+
+.hero-cta-group {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero-status-tag {
+    font-family: 'Orbitron';
+    font-size: 0.65rem;
+    color: var(--gold);
+    border: 1px solid rgba(243, 200, 79, 0.3);
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: rgba(243, 200, 79, 0.05);
+}
+
+/* --- Animations --- */
+
+@keyframes scanningLine {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+@keyframes hudPulse {
+    from { width: 10px; opacity: 0.3; }
+    to { width: 60px; opacity: 1; }
+}
+
+.hero-description { display: none; } /* Kill the extra text you hate */
 
 /* Telemetry HUD Boxes */
 .hero-telemetry {
@@ -403,14 +477,6 @@ select {
 .kicker-wrapper { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; }
 .pulse-icon { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold); animation: pulse 1.5s infinite; }
 .section-kicker { font-family: 'Orbitron'; text-transform: uppercase; letter-spacing: 5px; color: var(--gold); font-size: 0.8rem; }
-
-.hero-description { font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
-
-.hero-stats-row {
-    display: flex; justify-content: center; gap: 3rem; margin-top: 3rem;
-}
-.stat-item strong { display: block; font-family: 'Orbitron'; font-size: 1.5rem; color: #fff; }
-.stat-item span { font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; }
 
 /* Scroll Mouse */
 .scroll-indicator {
@@ -559,7 +625,7 @@ select {
     font-size: 0.8rem;
     z-index: 10;
 }
-.comparison-after figcaption {
+.comparison-slider .after-caption {
     left: auto;
     right: 1.5rem;
     background: rgba(243, 200, 79, 0.2);

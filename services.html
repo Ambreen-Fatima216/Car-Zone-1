@@ -11,6 +11,7 @@
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
     <canvas id="heroCanvas"></canvas>
+    <canvas id="servicesAmbientCanvas" class="services-ambient-canvas" aria-hidden="true"></canvas>
 
     <nav class="navbar">
         <a class="logo" href="index.html" aria-label="Car Zone home">
@@ -29,45 +30,32 @@
     </nav>
 
 <header class="services-hero">
+    <div class="hero-scanner-line"></div>
     <div class="vignette-overlay"></div>
-    <div class="grid-system"></div>
+    <canvas id="heroCanvas"></canvas>
     
-    <div class="hero-telemetry left">
-        <div class="tel-box"><span>STATUS</span><p>CORE_READY</p></div>
-        <div class="tel-box"><span>SYNC</span><p>99.8%</p></div>
+    <div class="hud-frame top-left">
+        <div class="hud-glitch">SYS_CHECK: OK</div>
+        <div class="hud-bar"></div>
     </div>
-    <div class="hero-telemetry right">
-        <div class="tel-box"><span>SCAN_MODE</span><p>FULL_SPECTRUM</p></div>
-        <div class="tel-box"><span>OBJECTIVE</span><p>OEM_PERFECTION</p></div>
+    <div class="hud-frame bottom-right">
+        <div class="hud-glitch">REF_092: ACTIVE</div>
+        <div class="hud-bar"></div>
     </div>
 
     <div class="hero-content reveal-on-load">
-        <div class="kicker-wrapper">
-            <span class="pulse-icon"></span>
-            <p class="section-kicker">Elite Capabilities</p>
-        </div>
+
         
         <h1 class="main-title" data-text="OUR SERVICES">OUR SERVICES</h1>
         
-        <div class="description-wrapper">
-            <div class="desc-line"></div>
-            <p class="hero-description">
-                Comprehensive, OEM-minded automotive care. From structural recovery to future-ready EV diagnostics, everything your vehicle needs is under one roof.
-            </p>
-        </div>
-
-        <div class="hero-stats-row">
-            <div class="stat-item"><strong>15+</strong><span>EXPERTS</span></div>
-            <div class="stat-item"><strong>100%</strong><span>OEM PARTS</span></div>
-            <div class="stat-item"><strong>24/7</strong><span>SUPPORT</span></div>
+        <div class="hero-cta-group">
+            <a href="#services-grid" class="btn-main">INITIALIZE SCAN</a>
+            <div class="hero-status-tag">SYSTEMS: OPTIMAL</div>
         </div>
     </div>
 
     <div class="scroll-indicator">
-        <div class="mouse">
-            <div class="wheel"></div>
-        </div>
-        <p>INITIATE SCAN</p>
+        <div class="mouse"><div class="wheel"></div></div>
     </div>
 </header>
 
@@ -161,12 +149,12 @@
                 </figure>
                 <figure class="comparison-after">
                     <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80" alt="Car after detailing (clean)">
-                    <figcaption>After</figcaption>
                 </figure>
                 <input type="range" min="0" max="100" value="50" id="compareSlider" aria-label="Percentage of before photo shown">
                 <div class="slider-button" aria-hidden="true">
                     <i class="fa-solid fa-arrows-left-right"></i>
                 </div>
+                <figcaption class="after-caption">After</figcaption>
             </div>
         </section>
 
@@ -236,105 +224,205 @@
 
     <script src="script.js"></script>
     <script>
-        // --- INTERACTIVE PARTICLE ENGINE ---
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let mouse = { x: null, y: null, radius: 150 };
+        // --- HERO CANVAS PARTICLE SYSTEM ---
+        const heroCanvas = document.getElementById('heroCanvas');
+        const heroCtx = heroCanvas.getContext('2d');
+        let heroParticles = [];
+        let heroMouse = { x: null, y: null, radius: 150 };
 
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
-});
+        window.addEventListener('mousemove', (e) => {
+            heroMouse.x = e.x;
+            heroMouse.y = e.y;
+        });
 
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
+        function resizeHero() {
+            heroCanvas.width = window.innerWidth;
+            heroCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeHero);
+        resizeHero();
 
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.density = (Math.random() * 30) + 1;
-    }
-    draw() {
-        ctx.fillStyle = 'rgba(243, 200, 79, 0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-    }
-    update() {
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let maxDistance = mouse.radius;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
-
-        if (distance < mouse.radius) {
-            this.x -= directionX;
-            this.y -= directionY;
-        } else {
-            if (this.x !== this.baseX) {
-                let dx = this.x - this.baseX;
-                this.x -= dx/10;
+        class HeroParticle {
+            constructor() {
+                this.x = Math.random() * heroCanvas.width;
+                this.y = Math.random() * heroCanvas.height;
+                this.size = Math.random() * 2;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
             }
-            if (this.y !== this.baseY) {
-                let dy = this.y - this.baseY;
-                this.y -= dy/10;
+            draw() {
+                heroCtx.fillStyle = 'rgba(243, 200, 79, 0.5)';
+                heroCtx.beginPath();
+                heroCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                heroCtx.closePath();
+                heroCtx.fill();
+            }
+            update() {
+                let dx = heroMouse.x - this.x;
+                let dy = heroMouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = heroMouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < heroMouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx/10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy/10;
+                    }
+                }
             }
         }
-    }
-}
 
-function init() {
-    particles = [];
-    for (let i = 0; i < 150; i++) {
-        particles.push(new Particle());
-    }
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particles.length; i++) {
-        particles[i].draw();
-        particles[i].update();
-    }
-    connect();
-    requestAnimationFrame(animate);
-}
-
-function connect() {
-    for (let a = 0; a < particles.length; a++) {
-        for (let b = a; b < particles.length; b++) {
-            let dx = particles[a].x - particles[b].x;
-            let dy = particles[a].y - particles[b].y;
-            let distance = Math.sqrt(dx*dx + dy*dy);
-
-            if (distance < 100) {
-                ctx.strokeStyle = `rgba(243, 200, 79, ${1 - (distance/100) * 0.2})`;
-                ctx.lineWidth = 0.5;
-                ctx.beginPath();
-                ctx.moveTo(particles[a].x, particles[a].y);
-                ctx.lineTo(particles[b].x, particles[b].y);
-                ctx.stroke();
+        function initHero() {
+            heroParticles = [];
+            for (let i = 0; i < 150; i++) {
+                heroParticles.push(new HeroParticle());
             }
         }
-    }
-}
 
-init();
-animate();
+        function animateHero() {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            for (let i = 0; i < heroParticles.length; i++) {
+                heroParticles[i].draw();
+                heroParticles[i].update();
+            }
+            connectHero();
+            requestAnimationFrame(animateHero);
+        }
+
+        function connectHero() {
+            for (let a = 0; a < heroParticles.length; a++) {
+                for (let b = a; b < heroParticles.length; b++) {
+                    let dx = heroParticles[a].x - heroParticles[b].x;
+                    let dy = heroParticles[a].y - heroParticles[b].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < 100) {
+                        heroCtx.strokeStyle = `rgba(243, 200, 79, ${1 - (distance/100) * 0.2})`;
+                        heroCtx.lineWidth = 0.5;
+                        heroCtx.beginPath();
+                        heroCtx.moveTo(heroParticles[a].x, heroParticles[a].y);
+                        heroCtx.lineTo(heroParticles[b].x, heroParticles[b].y);
+                        heroCtx.stroke();
+                    }
+                }
+            }
+        }
+
+        initHero();
+        animateHero();
+
+        // --- AMBIENT BACKGROUND PARTICLE SYSTEM ---
+        const ambientCanvas = document.getElementById('servicesAmbientCanvas');
+        const ambientCtx = ambientCanvas.getContext('2d');
+        let ambientParticles = [];
+        let ambientMouse = { x: null, y: null, radius: 150 };
+
+        window.addEventListener('mousemove', (e) => {
+            ambientMouse.x = e.clientX;
+            ambientMouse.y = e.clientY;
+        });
+
+        function resizeAmbient() {
+            ambientCanvas.width = window.innerWidth;
+            ambientCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeAmbient);
+        resizeAmbient();
+
+        class AmbientParticle {
+            constructor() {
+                this.x = Math.random() * ambientCanvas.width;
+                this.y = Math.random() * ambientCanvas.height;
+                this.size = Math.random() * 2;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+            }
+            draw() {
+                ambientCtx.fillStyle = 'rgba(243, 200, 79, 0.5)';
+                ambientCtx.beginPath();
+                ambientCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ambientCtx.closePath();
+                ambientCtx.fill();
+            }
+            update() {
+                let dx = ambientMouse.x - this.x;
+                let dy = ambientMouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = ambientMouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < ambientMouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx/10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy/10;
+                    }
+                }
+            }
+        }
+
+        function initAmbient() {
+            ambientParticles = [];
+            for (let i = 0; i < 150; i++) {
+                ambientParticles.push(new AmbientParticle());
+            }
+        }
+
+        function animateAmbient() {
+            ambientCtx.clearRect(0, 0, ambientCanvas.width, ambientCanvas.height);
+            for (let i = 0; i < ambientParticles.length; i++) {
+                ambientParticles[i].draw();
+                ambientParticles[i].update();
+            }
+            connectAmbient();
+            requestAnimationFrame(animateAmbient);
+        }
+
+        function connectAmbient() {
+            for (let a = 0; a < ambientParticles.length; a++) {
+                for (let b = a; b < ambientParticles.length; b++) {
+                    let dx = ambientParticles[a].x - ambientParticles[b].x;
+                    let dy = ambientParticles[a].y - ambientParticles[b].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < 100) {
+                        ambientCtx.strokeStyle = `rgba(243, 200, 79, ${1 - (distance/100) * 0.2})`;
+                        ambientCtx.lineWidth = 0.5;
+                        ambientCtx.beginPath();
+                        ambientCtx.moveTo(ambientParticles[a].x, ambientParticles[a].y);
+                        ambientCtx.lineTo(ambientParticles[b].x, ambientParticles[b].y);
+                        ambientCtx.stroke();
+                    }
+                }
+            }
+        }
+
+        initAmbient();
+        animateAmbient();
         // Scroll Reveal Animation (Intersection Observer)
         const observerOptions = {
             root: null,
