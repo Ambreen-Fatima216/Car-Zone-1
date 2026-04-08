@@ -28,8 +28,18 @@
         </div>
     </nav>
 
-    <header class="hero" id="home">
-        <div class="hero-bg"></div>
+    <header class="hero" id="home" data-hero-restoration>
+        <div class="hero-bg">
+            <div class="layers-container">
+                <div class="layer broken-layer">
+                    <img src="Image 1.png" alt="Broken Car">
+                </div>
+                <div class="layer fixed-layer" id="mask-overlay">
+                    <img src="Image 2.png" alt="Fixed Car">
+                </div>
+            </div>
+            <canvas id="mask-canvas"></canvas>
+        </div>
         <div class="hero-grid"></div>
         <div class="scanline"></div>
         <div class="hero-inner">
@@ -86,22 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-metrics">
-                    <div class="metric"><strong>2</strong><span>UAE service hubs</span></div>
-                    <div class="metric"><strong>OEM</strong><span>Precision-minded standards</span></div>
-                    <div class="metric"><strong>2026</strong><span>Future-ready EV and fleet wing</span></div>
-                </div>
             </div>
-            <aside class="hero-panel">
-                <span class="panel-chip">Featured Standard</span>
-                <h3>Dealership precision, cleaner delivery.</h3>
-                <p>Body, paint, mechanical, detailing, EV care, and fleet support in one system.</p>
-                <div class="panel-details">
-                    <div><span>Dubai</span><strong>10 7A Street, Umm Ramool</strong></div>
-                    <div><span>Sharjah</span><strong>19 St, Industrial Area 15</strong></div>
-                    <div><span>Contact</span><strong>+971 50 4140038</strong></div>
-                </div>
-            </aside>
         </div>
     </header>
 

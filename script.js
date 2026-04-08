@@ -352,6 +352,61 @@ if (revealTargets.length > 0) {
     }
 }
 
+// Canvas-based reveal animation
+const hero = document.querySelector('[data-hero-restoration]');
+const overlay = document.getElementById('mask-overlay');
+const canvas = document.getElementById('mask-canvas');
+
+if (hero && overlay && canvas) {
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        canvas.width = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let mouse = { x: 0, y: 0, active: false };
+
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = true;
+    });
+
+    function animate() {
+        // Memory effect: 0.01 = stays revealed longer
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (mouse.active) {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.beginPath();
+
+            // Soft gradient edges for smooth reveal
+            const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 100);
+            gradient.addColorStop(0, 'white');
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.arc(mouse.x, mouse.y, 100, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Apply canvas as mask to fixed layer
+        const maskURL = canvas.toDataURL();
+        overlay.style.webkitMaskImage = `url(${maskURL})`;
+        overlay.style.maskImage = `url(${maskURL})`;
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
 if (heroBg) {
     window.addEventListener("scroll", () => {
         const offset = Math.min(window.scrollY * 0.14, 120);

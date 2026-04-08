@@ -341,17 +341,40 @@ body.has-cursor .cursor-outline {
 
 .hero-bg {
     z-index: -3;
-    inset: -3%;
-    background:
-        linear-gradient(100deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.4) 42%, rgba(5, 5, 5, 0.7) 100%),
-        radial-gradient(circle at 18% 25%, rgba(243, 200, 79, 0.22), transparent 26%),
-        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=90');
-    background-size: cover;
-    background-position: center center;
-    filter: saturate(1.03) contrast(1.08) brightness(0.9);
-    transform: scale(1.04);
-    transition: transform 0.2s ease-out;
-    animation: heroBreath 14s ease-in-out infinite alternate;
+    inset: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+.layers-container,
+.layer,
+.layer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#mask-canvas {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.broken-layer {
+    z-index: 1;
+}
+
+.fixed-layer {
+    z-index: 2;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
 .hero-grid {
@@ -391,6 +414,9 @@ body.has-cursor .cursor-outline {
     transform: translateY(28px);
     transition: opacity 0.85s ease, transform 0.85s ease;
     padding-top: -10%;
+    pointer-events: none;
+    position: relative;
+    z-index: 10;
 }
 
 body.is-ready .hero-content,
@@ -465,6 +491,7 @@ body.is-ready .hero-panel {
 .principle-num {
     font-size: 0.78rem;
     color: var(--gold-bright);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(243, 200, 79, 0.4);
 }
 
 .eyebrow,
@@ -485,6 +512,7 @@ body.is-ready .hero-panel {
 
 .eyebrow {
     font-size: 0.8rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .section-copy,
@@ -512,16 +540,19 @@ body.is-ready .hero-panel {
     font-size: clamp(2.8rem, 7vw, 5.5rem); 
     line-height: 0.92;
     letter-spacing: 0.14em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 20px rgba(243, 200, 79, 0.3);
 }
 
 .sub-title {
     font-size: clamp(1.15rem, 3vw, 2rem);
     color: var(--gold-bright);
     letter-spacing: 0.3em;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85), 0 0 15px rgba(243, 200, 79, 0.35);
 }
 
 .hero-description {
     max-width: 39rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
     font-size: 1.02rem;
 }
 
