@@ -358,7 +358,11 @@ a { text-decoration: none; color: inherit; }
     .hotspot-card { width: 220px; }
 }
 
-.bento-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.bento-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; position: absolute; top: 0; left: 0; }
+.bento-item .normal-img { opacity: 1; }
+.bento-item .hover-img { opacity: 0; }
+.bento-item:hover .normal-img { opacity: 0; }
+.bento-item:hover .hover-img { opacity: 1; }
 .bento-item:hover img { transform: scale(1.08); }
 
 .item-overlay {
