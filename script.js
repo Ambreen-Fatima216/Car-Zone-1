@@ -352,6 +352,8 @@ if (revealTargets.length > 0) {
     }
 }
 
+
+
 // Canvas-based reveal animation
 const hero = document.querySelector('[data-hero-restoration]');
 const overlay = document.getElementById('mask-overlay');
@@ -529,4 +531,46 @@ if (homeAmbientCanvas) {
         resizeAmbientCanvas();
         animateAmbientCanvas();
     }
+let pricingData = {};
+
+    // Fetch data from backend on load
+    async function loadPricing() {
+        try {
+            const response = await fetch('https://car-zone-live.onrender.com/');
+            pricingData = await response.json();
+            console.log("Pricing loaded:", pricingData);
+        } catch (err) {
+            console.error("Failed to load pricing:", err);
+        }
+    }
+
+    // Call this when the page loads
+    loadPricing();
+
+    const vehicleSelect = document.getElementById('vehicleSelect');
+    const serviceSelect = document.getElementById('serviceSelect');
+    const priceDisplay = document.getElementById('priceDisplay'); // Ensure this ID exists in your HTML
+    const resultContainer = document.getElementById('estimateResult');
+
+    function calculateEstimate() {
+        const vType = vehicleSelect.value;
+        const sType = serviceSelect.value;
+
+        if (vType && sType && pricingData.serviceBasePrices) {
+            const basePrice = pricingData.serviceBasePrices[sType];
+            const multiplier = pricingData.vehicleMultipliers[vType];
+            
+            const lowEstimate = Math.round((basePrice * multiplier) / 50) * 50; 
+            const highEstimate = Math.round((lowEstimate * 1.4) / 50) * 50;
+
+            resultContainer.classList.add('active');
+            priceDisplay.innerHTML = `AED ${lowEstimate} - ${highEstimate}`;
+        }
+    }
+
+    vehicleSelect.addEventListener('change', calculateEstimate);
+    serviceSelect.addEventListener('change', calculateEstimate);
+
 }
+
+

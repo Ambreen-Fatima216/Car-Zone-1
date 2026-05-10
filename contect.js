@@ -61,30 +61,56 @@ const submitButton = document.getElementById("submitBtn");
 const formStatus = document.getElementById("formStatus");
 const bookingShell = document.querySelector(".booking-form-shell");
 
+// Replace your existing contactPageForm submit event listener with this:
 if (contactPageForm && submitButton && formStatus) {
-    contactPageForm.addEventListener("submit", (event) => {
+    contactPageForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
+        // 1. UI Loading State
         submitButton.disabled = true;
         submitButton.textContent = "Sending Request...";
-        formStatus.textContent = "Your request is being prepared.";
+        formStatus.textContent = "Please wait...";
         bookingShell?.classList.remove("is-success");
 
-        window.setTimeout(() => {
+        // 2. Prepare Data
+        const formData = new FormData(contactPageForm);
+        const data = Object.fromEntries(formData); 
+        // Note: Ensure your HTML inputs have 'name' attributes (name="name", name="email", etc.)
+
+        try {
+            // 3. Send to Backend
+            const response = await fetch('https://car-zone-live.onrender.com/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) throw new Error('Failed to send');
+
+            // 4. Success UI
             submitButton.textContent = "Request Sent";
-            formStatus.textContent = "Thanks. The Car Zone team will follow up with the next step.";
+            formStatus.textContent = "Success! The Car Zone team will follow up.";
             bookingShell?.classList.add("is-success");
             contactPageForm.reset();
 
+        } catch (error) {
+            // 5. Error Handling
+            console.error(error);
+            submitButton.textContent = "Error";
+            formStatus.textContent = "Something went wrong. Please try again.";
+        } finally {
+            // 6. Reset UI after delay
             window.setTimeout(() => {
                 submitButton.disabled = false;
                 submitButton.textContent = "Send Request";
                 bookingShell?.classList.remove("is-success");
-            }, 2200);
-        }, 900);
+                formStatus.textContent = ""; 
+            }, 3000);
+        }
     });
 }
-
 const tiltCards = document.querySelectorAll("[data-tilt-card]");
 
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -222,3 +248,16 @@ window.addEventListener("resize", resizeContactCanvas);
 
 initContactParticles();
 animateContactCanvas();
+
+const mongoose = require('mongoose');
+
+const contactSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    message: String,
+    service: String,
+    location: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Contact', contactSchema);
