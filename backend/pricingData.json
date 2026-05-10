@@ -1,0 +1,15 @@
+{
+    "serviceBasePrices": {
+        "detailing": 450,
+        "ceramic": 1500,
+        "maintenance": 300,
+        "brakes": 600,
+        "diagnostic": 250
+    },
+    "vehicleMultipliers": {
+        "sedan": 1.0,
+        "suv": 1.3,
+        "luxury": 1.5,
+        "ev": 1.2
+    }
+}
