@@ -79,7 +79,7 @@ if (contactPageForm && submitButton && formStatus) {
 
         try {
             // 3. Send to Backend
-            const response = await fetch('https://car-zone-live.onrender.com/', {
+            const response = await fetch('https://car-zone-live.onrender.com/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
