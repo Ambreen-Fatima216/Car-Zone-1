@@ -2,6 +2,9 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // Required for port 587
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -9,7 +12,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async (to, subject, data) => {
-    // This template uses HTML to build the structure
     const htmlContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3nFjE3Je6p-5t9gOIg_KoyLAls-qTtHDtNw&s" alt="Car Zone Logo" style="width: 200px; margin-bottom: 20px;">
@@ -42,11 +44,12 @@ const sendEmail = async (to, subject, data) => {
             from: `"Car Zone Support" <${process.env.EMAIL_USER}>`,
             to: to,
             subject: subject,
-            html: htmlContent // THIS IS THE IMPORTANT PART - MUST BE 'html'
+            html: htmlContent 
         });
         console.log("Professional email sent to " + to);
     } catch (error) {
         console.error("Email error:", error);
+        throw error; // Let the route know it failed
     }
 };
 
@@ -65,7 +68,7 @@ const sendInternalNotification = async (data) => {
         </div>
         
         <p style="font-size: 12px; color: #888; margin-top: 20px;">
-            This is an automated notification from your website. Please contact the client soon to secure the booking.
+            This is an automated notification from your website.
         </p>
     </div>
     `;
@@ -73,15 +76,16 @@ const sendInternalNotification = async (data) => {
     try {
         await transporter.sendMail({
             from: `"Car Zone System" <${process.env.EMAIL_USER}>`,
-            to: 'flowstatedesign26@gmail.com', // Your business email
+            to: 'flowstatedesign26@gmail.com', 
             subject: "New Booking Request: " + data.name,
             html: htmlContent
         });
         console.log("Internal notification sent to business");
     } catch (error) {
         console.error("Internal email failed:", error);
+        throw error;
     }
 };
 
+// EXPORT BOTH FUNCTIONS PROPERLY
 module.exports = { sendEmail, sendInternalNotification };
-module.exports = sendEmail;
