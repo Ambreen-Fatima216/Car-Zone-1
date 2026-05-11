@@ -177,8 +177,9 @@
                 <div class="form-container booking-form-shell">
                     <form class="contact-form" id="contactForm">
                         <div class="form-row">
-                            <input type="text" class="form-input" name="name" placeholder="Your Name" required>
-                            <input type="tel" class="form-input" name="phone" placeholder="Phone Number" required>
+                            <input type="text" name="name" placeholder="Your Name" class="form-input">
+<input type="email" name="email" placeholder="Email Address" class="form-input">
+
                         </div>
                         <div class="form-row">
                             <select class="form-input form-select" name="service" required>
@@ -195,7 +196,7 @@
                                 <option value="sharjah">Sharjah</option>
                             </select>
                         </div>
-                        <textarea class="form-textarea" name="message" placeholder="Tell us about the car and the work you need." required></textarea>
+                        <textarea name="message" placeholder="Project Details" class="form-textarea"></textarea>
                         <button class="btn-main full-width" id="submitBtn" type="submit">Send Request</button>
                         <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
@@ -257,5 +258,6 @@
 
     <script src="script.js"></script>
     <script src="contect.js"></script>
+    <script src='https://www.noupe.com/embed/019d92f98ab477ebaaf3ae16e7ad0cbfed93.js'></script>
 </body>
 </html>
